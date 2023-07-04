@@ -1,20 +1,13 @@
 'use strict';
 
-function BinarioADecimal(binario) {
-  if (binario === '') {
-    return 0;
+function BinarioADecimal(num) {
+  num = num.split('').reverse();
+  var suma = 0;
+  for (var i = 0; i < num.length; i++) {
+    suma += Math.pow(2, i) * num[i];
   }
-
-  let decimal = 0;
-  const binarioInvertido = binario.split('').reverse().join('');
-
-  for (let i = 0; i < binarioInvertido.length; i++) {
-    const digito = binarioInvertido[i];
-    const valorDigito = digito === '1' ? 1 : 0;
-    decimal += valorDigito * Math.pow(2, i);
-  }
-
-  return decimal;
+  console.log(suma);
+  return suma;
 }
 
 function DecimalABinario(num) {
@@ -23,12 +16,11 @@ function DecimalABinario(num) {
   }
 
   let binario = '';
-  let numero = num;
 
-  while (numero > 0) {
-    const residuo = numero % 2;
+  while (num > 0) {
+    const residuo = num % 2;
     binario = residuo.toString() + binario;
-    numero = Math.floor(numero / 2);
+    num = Math.floor(num / 2);
   }
 
   return binario;
