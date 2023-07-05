@@ -30,10 +30,10 @@ console.log(x); ///  contexto global ,x = 1
 
 ```javascript
 console.log(bar); /// la variable var fue declarada antes de definirla, undefined
-console.log(baz); /// 2
+console.log(baz); /// la variable var fue declarada antes de definirla, undefined
 foo();
 function foo() {
-  console.log('Hola!'); /// hola ! el llamado se ejecuta
+  console.log('Hola!'); ///el codigo falla , no se declara el tipo de varibale que es baz antes de ejecutarla
 }
 var bar = 1;
 baz = 2;
@@ -44,7 +44,7 @@ var instructor = 'Tony';
 if (true) {
   var instructor = 'Franco';
 }
-console.log(instructor); /// se visualiza franco ya que la condicion es true , en caso de ser false imprime tony
+console.log(instructor); /// se visualiza franco ya que la condicion es true ,
 ```
 
 ```javascript
@@ -131,7 +131,7 @@ function getFood(food) {
   return snack;
 }
 
-getFood(false); ////
+getFood(false); //// undefined , no se declara el valor false
 ```
 
 ### This
@@ -150,11 +150,11 @@ var obj = {
   },
 };
 
-console.log(obj.prop.getFullname());
+console.log(obj.prop.getFullname()); /// Aurelio De Rosa , obj.prop el fullaname es aurelio rosa , y ejecuta la funcion denrto del prop
 
 var test = obj.prop.getFullname;
 
-console.log(test());
+console.log(test()); /// undefined test no es una funcion
 ```
 
 ### Event loop
@@ -164,6 +164,7 @@ Considerando el siguiente código, ¿Cuál sería el orden en el que se muestra 
 ```javascript
 function printing() {
   console.log(1);
+
   setTimeout(function () {
     console.log(2);
   }, 1000);
